@@ -1,31 +1,32 @@
-/* Global reset & box sizing */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Base page styles */
 body {
   font-family: Arial, sans-serif;
   background-color: #f1f1f1;
+  color: #212121;
   padding: 20px;
 }
 
-/* Centered container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Header */
 .site-header {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 0;
   margin-bottom: 20px;
+}
+
+.logo {
+  width: 140px;
+  margin-right: 15px;
 }
 
 h1 {
@@ -34,111 +35,139 @@ h1 {
   color: #212121;
 }
 
-/* Logo */
-.logo {
-  width: 140px;
-  margin-right: 15px;
-}
-
-/* Date‐picker & button row */
 .filters {
   display: flex;
-  flex-direction: column;
   gap: 10px;
   justify-content: center;
-  margin-bottom: 20px;
-  padding: 0 20px;
+  margin-bottom: 30px;
 }
 
-/* Inputs and buttons */
 input[type="date"],
 button {
   font-family: Arial, sans-serif;
-  font-weight: normal;
-  color: #666;
   padding: 10px 15px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 16px;
-  line-height: 1.4;
-  width: 100%;
+  font-size: 15px;
 }
 
-/* Button specific */
 button {
-  background-color: #d3d3d3;
-  color: black;
+  background-color: #0b3d91;
+  color: white;
+  border: none;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
+
 button:hover {
-  background-color: #bfbfbf;
+  background-color: #082b68;
 }
 
-/* Stack horizontally on wider screens */
-@media (min-width: 600px) {
-  .filters {
-    flex-direction: row;
-    padding: 0;
-  }
-  
-  input[type="date"],
-  button {
-    width: auto;
-  }
-}
-
-/* Gallery flex container */
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
+  gap: 25px;
   justify-content: center;
 }
 
-/* Gallery items */
 .gallery-item {
-  flex: 1 1 100%;  /* full width by default */
+  flex: 0 1 31%;
   min-width: 280px;
-  max-width: 500px;
   background: white;
-  padding: 10px;
+  padding: 12px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
-/* Three columns on wider screens */
-@media (min-width: 1000px) {
-  .gallery-item {
-    flex: 0 1 31%;
-  }
+.gallery-item:hover {
+  transform: translateY(-3px);
 }
 
 .gallery-item img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
-.gallery-item p {
-  margin-top: 10px;
-  padding: 5px;
+.card-info {
+  padding: 10px 5px 5px 5px;
+}
+
+.card-info h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #111111;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.card-date {
   font-size: 14px;
+  color: #666666;
 }
 
-/* Placeholder content */
-.placeholder {
-  flex: 1 1 100%;
+.loading, .placeholder {
+  font-size: 18px;
+  color: #666;
   text-align: center;
   padding: 40px;
+  width: 100%;
+}
+
+/* Modal View */
+.hidden {
+  display: none !important;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  max-width: 650px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 25px;
+  border-radius: 8px;
+  position: relative;
+  color: #212121;
+}
+
+.modal-content img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: contain;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 28px;
+  cursor: pointer;
   color: #666;
 }
 
-.placeholder-icon {
-  font-size: 48px;
-  margin-bottom: 20px;
+.close-btn:hover {
+  color: #fc3d21;
 }
